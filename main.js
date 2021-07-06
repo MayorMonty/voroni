@@ -1,3 +1,4 @@
+
 import("./pkg")
   .then((wasm) => {
     const canvas = document.getElementById("canvas");

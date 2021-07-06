@@ -3,7 +3,9 @@ name = "voronoi"
 version = "0.1.0"
 authors = ["Brendan McGuire <brendan@bren.app>"]
 edition = "2018"
-
+description = "Creates voronoi diagrams using Rust and WebAssembly"
+license = "MIT"
+repository = "https://github.com/MayorMonty/voronoi"
 
 [lib]
 crate-type = ["cdylib"]
