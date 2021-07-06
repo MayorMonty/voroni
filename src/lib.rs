@@ -19,6 +19,9 @@ pub fn start() {
         .unwrap();
 
     context.begin_path();
+    context.set_stroke_style(&JsValue::from_str("#fab1a0"));
+    context.set_line_width(4.0);
+    
 
     // Draw the outer circle.
     context
