@@ -1,5 +1,5 @@
 [package]
-name = "voroni"
+name = "voronoi"
 version = "0.1.0"
 authors = ["Brendan McGuire <brendan@bren.app>"]
 edition = "2018"
