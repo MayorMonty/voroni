@@ -1,206 +1,235 @@
 @font-face {
-    font-family: "Sansita";
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url(https://fonts.gstatic.com/s/sansita/v5/QldLNTRRphEb_-V7JKWUWX5-ww.woff2)
-      format("woff2");
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-      U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
-      U+FEFF, U+FFFD;
+  font-family: "Sansita";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sansita/v5/QldLNTRRphEb_-V7JKWUWX5-ww.woff2)
+    format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7l.woff2)
+    format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Fira Code";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/firacode/v10/uU9eCBsR6Z2vfE9aq3bL0fxyUs4tcw4W_D1sJVD7Ng.woff2)
+    format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+body,
+html {
+  font-family: "Source Sans Pro", sans-serif;
+  color: #eee;
+  background-color: #333333;
+  margin: 0;
+  border-top: 4px solid #a29bfe;
+  height: 100%;
+  box-sizing: border-box;
+  font-size: 1.05rem;
+}
+
+main {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 32px;
+  padding-top: 36px;
+  box-sizing: border-box;
+}
+
+header.margin-bottom {
+  margin-bottom: 48px;
+}
+
+h1.intro,
+.title {
+  font-family: "Sansita", serif;
+  margin-bottom: 8px;
+}
+
+.subhead {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  margin: 0;
+}
+
+.purple {
+  color: #a29bfe;
+}
+
+.orange {
+  color: #fab1a0;
+}
+
+nav.social {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2rem;
+}
+
+nav.social a.link {
+  margin: 12px 0;
+  color: #eee;
+  text-decoration: none;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+}
+
+nav.social a.link span.text {
+  margin-left: 24px;
+}
+
+nav.social a.link:hover span.text {
+  color: #fab1a0;
+}
+
+nav.social a.link img {
+  width: 32px;
+}
+
+@media (min-width: 760px) {
+  h1.intro {
+    margin-top: 2em;
   }
-  
-  @font-face {
-    font-family: "Source Sans Pro";
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7l.woff2)
-      format("woff2");
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-      U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
-      U+FEFF, U+FFFD;
-  }
-  
-  @font-face {
-    font-family: "Fira Code";
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(https://fonts.gstatic.com/s/firacode/v10/uU9eCBsR6Z2vfE9aq3bL0fxyUs4tcw4W_D1sJVD7Ng.woff2)
-      format("woff2");
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-      U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
-      U+FEFF, U+FFFD;
-  }
-  
-  body,
-  html {
-    font-family: "Source Sans Pro", sans-serif;
-    color: #eee;
-    background-color: #333333;
-    margin: 0;
-    border-top: 4px solid #a29bfe;
-    height: 100%;
-    box-sizing: border-box;
-    font-size: 1.05rem;
-  }
-  
-  main {
-    width: 100%;
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 32px;
-    padding-top: 36px;
-    box-sizing: border-box;
-  }
-  
-  header.margin-bottom {
-    margin-bottom: 48px;
-  }
-  
-  h1.intro,
-  .title {
-    font-family: "Sansita", serif;
-    margin-bottom: 8px;
-  }
-  
-  .subhead {
-    font-family: "Source Sans Pro", sans-serif;
-    font-weight: 400;
-    font-style: italic;
-    margin: 0;
-  }
-  
-  .purple {
-    color: #a29bfe;
-  }
-  
-  .orange {
-    color: #fab1a0;
-  }
-  
-  nav.social {
-    margin-top: 24px;
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 2rem;
-  }
-  
-  nav.social a.link {
-    margin: 12px 0;
-    color: #eee;
-    text-decoration: none;
-    font-size: 22px;
-    display: flex;
-    align-items: center;
-  }
-  
-  nav.social a.link span.text {
-    margin-left: 24px;
-  }
-  
-  nav.social a.link:hover span.text {
-    color: #fab1a0;
-  }
-  
-  nav.social a.link img {
-    width: 32px;
-  }
-  
-  @media (min-width: 760px) {
-    h1.intro {
-      margin-top: 2em;
-    }
-  }
-  .project header {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  }
-  
-  .project header .subhead {
-    flex: 0 0 100%;
-    margin-top: -16px;
-  }
-  
-  .project .cta * {
-    padding-right: 8px;
-  }
-  
-  img.rounded {
-    border-radius: 100%;
-  }
-  
-  section {
-    position: relative;
-  }
-  
-  section.dashed-top {
-    border-top: 2px dashed #a29bfe;
-  }
-  
-  section a.permalink {
-    position: absolute;
-    right: 0;
-    top: -36px;
-    font-size: 1.6rem;
-    color: #a29bfe;
-    text-decoration: none;
-  }
-  
-  div.job {
-    display: flex;
-  }
-  
-  blockquote {
-    background: #1a1a1a;
-    padding: 16px;
-    margin-left: 0;
-    border-radius: 8px;
-  }
-  
-  blockquote.mono {
-    font-family: "Fira Code", monospace;
-    font-size: 0.9rem;
-  }
-  
-  blockquote.warn {
-    background-color: #fab1a0;
-    color: #1a1a1a;
-  }
-  
-  ul {
-    padding-top: 0;
-  }
-  
+}
+.project header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.project header .subhead {
+  flex: 0 0 100%;
+  margin-top: -16px;
+}
+
+.project .cta * {
+  padding-right: 8px;
+}
+
+img.rounded {
+  border-radius: 100%;
+}
+
+section {
+  position: relative;
+}
+
+section.dashed-top {
+  border-top: 2px dashed #a29bfe;
+}
+
+section a.permalink {
+  position: absolute;
+  right: 0;
+  top: -36px;
+  font-size: 1.6rem;
+  color: #a29bfe;
+  text-decoration: none;
+}
+
+div.job {
+  display: flex;
+}
+
+blockquote {
+  background: #1a1a1a;
+  padding: 16px;
+  margin-left: 0;
+  border-radius: 8px;
+}
+
+blockquote.mono {
+  font-family: "Fira Code", monospace;
+  font-size: 0.9rem;
+}
+
+blockquote.warn {
+  background-color: #fab1a0;
+  color: #1a1a1a;
+}
+
+ul {
+  padding-top: 0;
+}
+
 canvas {
-    width: 100%;
-    border-radius: 8px;
-    border: 2px solid #fab1a0;
+  width: 100%;
+  border-radius: 8px;
+  border: 2px solid #fab1a0;
 }
 
 button.outlined {
-    background: none;
-    border: 2px solid #fab1a0;
-    border-radius: 8px;
-    padding: 8px 16px;
-    text-transform: uppercase;
-    font-weight: bold;
-    color: #fab1a0;
-    cursor: pointer;
+  background: none;
+  border: 2px solid #fab1a0;
+  border-radius: 8px;
+  padding: 8px 16px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fab1a0;
+  cursor: pointer;
 }
 
 button.outlined:hover {
-    background: rgba(98, 69, 63, 0.4); /* #fab1a0 */
+  background: rgba(98, 69, 63, 0.4); /* #fab1a0 */
 }
 
 button.outlined:active {
-    background: #fab1a0; /* #fab1a0 */
-    color: #333333;
+  background: #fab1a0; /* #fab1a0 */
+  color: #333333;
 }
 
 button.right {
-    margin-left: auto;
-    display: block;
+  margin-left: auto;
+  display: block;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.controls label {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+}
+
+input {
+  background-color: #1a1a1a;
+  outline: none;
+  border: 0;
+  border-radius: 8px;
+  padding: 8px 16px;
+  color: #fff;
+  border: 2px solid #1a1a1a;
+}
+
+.controls label span {
+  margin-right: 16px;
+  margin-bottom: 2px;
 }

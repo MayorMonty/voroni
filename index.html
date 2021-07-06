@@ -1,22 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="main.css">
-  <title>Voronoi Diagrams</title>
-</head>
-<body>
-  <main>
-    <header>
-      <h1 class="title">Voronoi Diagrams</h1>
-      <p>Voronoi diagrams generate semi-random regions by filling the space with a number of random
-      points and assigning each point in the space according to the closest point. You can configure
-      the details of the voronoi diagram below.</p>
-    </header>
-    <canvas id="canvas" height="900" width="1600"></canvas>
-    <button id="regenerate" class="outlined right">regenerate</button>
-  </main>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" />
+    <title>Voronoi Diagrams</title>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1 class="title">Voronoi Diagrams</h1>
+        <p>
+          Voronoi diagrams generate semi-random regions by filling the space
+          with a number of random points and assigning each point in the space
+          according to the closest point. You can configure the details of the
+          voronoi diagram below.
+        </p>
+      </header>
+      <canvas id="canvas" height="900" width="1600"></canvas>
+      <section class="controls">
+        <div class="control">
+          <label>
+            <span>Number of Points</span>
+            <input type="number" min="2" max="12" step="1" value="4" id="points" />
+          </label>
+        </div>
+        <button id="regenerate" class="outlined">regenerate</button>
+      </section>
+    </main>
+  </body>
 </html>
