@@ -1,3 +1,5 @@
+import "./main.css"
+
 
 import("./pkg")
   .then((wasm) => {
