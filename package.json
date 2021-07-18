@@ -1,7 +1,7 @@
 {
     "scripts": {
         "build": "webpack",
-        "serve": "npx cross-env DEV=true webpack-dev-server"
+        "dev": "npx cross-env DEV=true webpack-dev-server"
     },
     "devDependencies": {
         "@wasm-tool/wasm-pack-plugin": "1.0.1",
