@@ -15,6 +15,7 @@ js-sys = "0.3.51"
 wasm-bindgen = "0.2.74"
 rand = "0.8"
 getrandom = { version = "0.2", features = ["js"] }
+cached = "0.23"
 
 [dependencies.web-sys]
 version = "0.3.4"
