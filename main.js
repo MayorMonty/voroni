@@ -3,6 +3,9 @@ import "./main.css"
 
 import("./pkg")
   .then((wasm) => {
+
+    wasm.initialize();
+
     const canvas = document.getElementById("canvas");
     const context = canvas.getContext("2d");
 
