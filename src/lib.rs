@@ -1,4 +1,3 @@
-use js_sys::Array;
 use point::Point;
 use std::f64;
 use std::u32;
