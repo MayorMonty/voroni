@@ -28,7 +28,16 @@ features = [
   'Element',
   'HtmlCanvasElement',
   'Window',
-  'console'
+  'console',
+  'CssStyleDeclaration',
+  'EventTarget',
+  'HtmlElement',
+  'MouseEvent',
+  'TouchEvent',
+  'Touch',
+  'TouchList',
+  'Node',
+  'DomRect'
 ]
 
 [profile.release]

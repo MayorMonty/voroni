@@ -22,8 +22,27 @@
       <h2 class="title">Voronoi Diagram</h2>
       <section class="dashed-top" id="voronoi-intro">
         <a href="#voronoi-intro" class="permalink">#</a>
-        <p></p>
+        <p>So what is a Voronoi Diagram exactly? Imagine we a number of random points in space
+        (these points are usually called the <em>sites</em> of the diagram). The goal is to
+        divide space into regions—one for each site—such that <em>each point in that region is
+        closer to its specific site than any other site.</em></p>
+
+        <p>Move your cursor (or finger) over the region below to see what the closest site is at
+        that point. See if you can find the areas where the closest site changes (the edges on this
+        Voronoi Diagram)</p>
       </section>
+
+      <canvas id="demo-1" height="900" width="1600"></canvas>
+      <section class="controls">
+        <div class="control">
+          <label>
+            <span>Number of Points</span>
+            <input type="number" min="2" max="12" step="1" value="4" id="demo-1-points" />
+          </label>
+        </div>
+        <button id="demo-1-regenerate" class="outlined">regenerate</button>
+      </section>
+
 
       <h2 class="title">Approach #1: Flood Fill</h2>
       <section class="dashed-top" id="flood-fill">
