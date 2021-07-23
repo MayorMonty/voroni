@@ -1,10 +1,16 @@
+///
+/// Represents a point in 2D space. Coordinates are stored as integers, so some computations will
+/// need to round to the nearest integer.
+/// 
+/// Author: Brendan McGuire
+/// Date: 18 July 2021
+/// 
+/// https://bren.app/voronoi/
+/// 
+
+
 use std::{fmt::Display, ops::Range};
 use rand::prelude::*;
-use web_sys::console;
-
-///
-/// Represents a point in 2D space.
-/// 
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
 pub struct Point { pub x: i32, pub y: i32 }
@@ -12,9 +18,6 @@ pub enum Metric {
     Euclidean,
     Manhattan,
 }
-
-/// -4652740521
-/// -2147483647
 
 impl Point {
     pub fn new(x: i32, y: i32) -> Point {
