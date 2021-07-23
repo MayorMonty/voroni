@@ -1,7 +1,3 @@
-
-use std::fmt::Display;
-
-
 ///
 /// Represents a single triangle in the triangulation. Each triangle is defined by three points. 
 /// 
@@ -11,6 +7,7 @@ use std::fmt::Display;
 /// https://bren.app/voronoi/
 /// 
 
+use std::fmt::Display;
 use crate::{Point, point::Metric};
 
 #[derive(Clone, Copy, Debug)]
@@ -26,8 +23,6 @@ pub struct Triangle {
 
 impl Triangle {
     pub fn new(p1: Point, p2: Point, p3: Point) -> Triangle {
-
-
 
         let (circumcenter, circumradius) = Self::circumcircle(p1, p2, p3);
 
