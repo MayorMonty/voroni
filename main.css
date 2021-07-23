@@ -233,3 +233,27 @@ input {
   margin-right: 16px;
   margin-bottom: 2px;
 }
+
+p {
+  line-height: 1.4;
+  overflow-wrap: break-word;
+}
+
+section.image {
+  display: flex; 
+  margin-bottom: 8px;
+}
+
+section.image.image-row {
+  flex-direction: row;
+}
+
+section.image.image-row p {
+  margin-left: 16px;
+  font-style: italic;
+}
+
+section.image img {
+  border-radius: 8px;
+  max-height: 30vh;
+}
