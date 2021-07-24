@@ -12,7 +12,7 @@
 use std::{fmt::Display, ops::Range};
 use rand::prelude::*;
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct Point { pub x: i32, pub y: i32 }
 pub enum Metric {
     Euclidean,
