@@ -10,11 +10,12 @@
   <body>
     <main>
       <header class="margin-bottom">
-        <h1 class="title">Generating Voronoi Diagrams: How Do We Do It For Real?</h1>
+        <h1 class="title">
+          Generating Voronoi Diagrams: How Do We Do It For Real?
+        </h1>
         <h3 class="subhead">
-          <span class="orange">23 July 2021</span> • <span class="purple">Brendan McGuire</span>
+          <span class="orange">23 July 2021</span>
         </h3>
-              
       </header>
 
       <p>[Introduction of Voronoi Diagrams]</p>
@@ -22,14 +23,23 @@
       <h2 class="title">Voronoi Diagram</h2>
       <section class="dashed-top" id="voronoi-intro">
         <a href="#voronoi-intro" class="permalink">#</a>
-        <p>So what is a Voronoi Diagram exactly? Imagine we a number of random points in space
-        (these points are usually called the <em>sites</em> of the diagram). The goal is to
-        divide space into regions—one for each site—such that <em>each point in that region is
-        closer to its specific site than any other site.</em></p>
+        <p>
+          So what is a Voronoi Diagram exactly? Imagine we a number of random
+          points in space (these points are usually called the <em>sites</em> of
+          the diagram). The goal is to divide space into regions—one for each
+          site—such that
+          <em
+            >each point in that region is closer to its specific site than any
+            other site.</em
+          >
+        </p>
 
-        <p>Move your cursor (or finger) over the region below to see what the closest site is at
-        that point. See if you can find the areas where the closest site changes (the edges on this
-        Voronoi Diagram)</p>
+        <p>
+          You can see an example of what exactly this means below. Move your
+          cursor (or finger) over the region below to see what the closest site
+          is at that point. See if you can find the areas where the closest site
+          changes
+        </p>
       </section>
 
       <canvas id="demo-1" height="900" width="1600"></canvas>
@@ -37,17 +47,77 @@
         <div class="control">
           <label>
             <span>Number of Points</span>
-            <input type="number" min="2" max="12" step="1" value="4" id="demo-1-points" />
+            <input
+              type="number"
+              min="2"
+              max="12"
+              step="1"
+              value="4"
+              id="demo-1-points"
+            />
           </label>
         </div>
         <button id="demo-1-regenerate" class="outlined">regenerate</button>
       </section>
 
+      <p>
+        If you trace the graph long enough, you may be able to work out where
+        some of the edges of the Voronoi Diagram are. But how could we create a
+        more systematic approach to this? In other words, could we write a
+        program that would be able to return the edges?
+      </p>
 
-      <h2 class="title">Approach #1: Flood Fill</h2>
-      <section class="dashed-top" id="flood-fill">
-        <a href="#flood-fill" class="permalink">#</a>
-        <p></p>
+      <h2 class="title">Approach #1: Breadth-First Search</h2>
+      <section class="dashed-top" id="bfs">
+        <a href="#bfs" class="permalink">#</a>
+        <p>What if we started at each site, and move slowly outwards, categorizing each point on the
+        canvas by their closest site? When we encounter a point that is equally distant from 2 of
+        the voronoi sites, we have found an edge between those 2 sites! We'll want to keep track of
+        all of these edge pixels, so we can render them at the end.</p>
+
+        <p>So our game plan is as follows:</p>
+        <ol>
+          <li>
+            For each site, do the following:
+            <ol type="a">
+              <li>Start at the site itself</li>
+              <li>Determine if the distance </li>
+            </ol>
+          </li>
+        </ol>
+
+
+        <canvas id="demo-2" height="900" width="1600"></canvas>
+        <section class="controls">
+          <div class="control">
+            <label>
+              <span>Number of Points</span>
+              <input
+                type="number"
+                min="2"
+                max="12"
+                step="1"
+                value="4"
+                id="demo-2-points"
+              />
+            </label>
+          </div>
+          <div class="control">
+            <label>
+              <span>Execution Speed</span>
+              <input
+                type="number"
+                min="1"
+                max="5"
+                step="1"
+                value="3"
+                id="demo-2-speed"
+              />
+            </label>
+          </div>
+          <button id="demo-2-go" class="outlined">Go!</button>
+        </section>
+
       </section>
 
       <h2 class="title">Approach #2: Fortune's Algorithm</h2>
@@ -67,7 +137,6 @@
         <a href="#whats-the-best" class="permalink">#</a>
         <p></p>
       </section>
-
 
       <!-- <canvas id="canvas" height="900" width="1600"></canvas>
       <section class="controls">
