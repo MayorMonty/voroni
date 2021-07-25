@@ -21,17 +21,15 @@ function demo2(wasm) {
 
   const go = document.getElementById("demo-2-go");
   const points = document.getElementById("demo-2-points");
-  const speed = document.getElementById("demo-2-speed");
 
   go.addEventListener("click", () => {
     context.clearRect(0, 0, canvas.width, canvas.height);
-    wasm.demo2(canvas, +points.value, +speed.value);
+    wasm.demo2(canvas, +points.value);
   });
 
 
-  wasm.demo2(canvas, +points.value, +speed.value);
+  wasm.demo2(canvas, +points.value);
 }
-
 
 
 import("./pkg")

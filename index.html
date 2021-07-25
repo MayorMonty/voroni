@@ -63,31 +63,35 @@
       <p>
         If you trace the graph long enough, you may be able to work out where
         some of the edges of the Voronoi Diagram are. But how could we create a
-        more systematic approach to this? In other words, could we write a
-        program that would be able to return the edges?
+        more systematic approach to this?
       </p>
 
-      <h2 class="title">Approach #1: Breadth-First Search</h2>
-      <section class="dashed-top" id="bfs">
-        <a href="#bfs" class="permalink">#</a>
-        <p>What if we started at each site, and move slowly outwards, categorizing each point on the
-        canvas by their closest site? When we encounter a point that is equally distant from 2 of
-        the voronoi sites, we have found an edge between those 2 sites! We'll want to keep track of
-        all of these edge pixels, so we can render them at the end.</p>
+      <h2 class="title">Approach #1: Naive Approach</h2>
+      <section class="dashed-top" id="naive">
+        <a href="naive" class="permalink">#</a>
+        <p>Let's start with the simplest way to do this: what if, for every pixel, we just measure
+        and record the shortest distance.</p>
 
-        <p>So our game plan is as follows:</p>
-        <ol>
-          <li>
-            For each site, do the following:
-            <ol type="a">
-              <li>Start at the site itself</li>
-              <li>Determine if the distance </li>
-            </ol>
-          </li>
-        </ol>
+        <blockquote class="mono">
+          <p class="line i0">let shortest = map(point => site)</p>
+          <p class="line i0">for each point in plane {</p>
+            <p class="line i1">let closest_site;</p>
+            <p class="line i1">let closest_distance;</p>
+            <p class="line i1">for each site in sites {</p>
+              <p class="line i2">let distance = distance(point, site);</p>
+              <p class="line i2">if distance < closest_distance {</p>
+                <p class="line i3">closest_site = site;</p>
+                <p class="line i3">closest_distance = distance;</p>
+              <p class="line i2">}</p>
+            <p class="line i1">}</p>
+            <p class="line i1">shortest[point] = closest_site</p>
+          <p class="line i0">}</p>
+        </blockquote>
 
+        <p>So, let's try it! The demo below will iterate through every pixel in the plane
+        (160x90), and determine the closest voronoi site. </p>
 
-        <canvas id="demo-2" height="900" width="1600"></canvas>
+        <canvas id="demo-2" height="180" width="320"></canvas>
         <section class="controls">
           <div class="control">
             <label>
@@ -95,28 +99,30 @@
               <input
                 type="number"
                 min="2"
-                max="12"
+                max="9"
                 step="1"
                 value="4"
                 id="demo-2-points"
               />
             </label>
           </div>
-          <div class="control">
-            <label>
-              <span>Execution Speed</span>
-              <input
-                type="number"
-                min="1"
-                max="5"
-                step="1"
-                value="3"
-                id="demo-2-speed"
-              />
-            </label>
-          </div>
           <button id="demo-2-go" class="outlined">Go!</button>
         </section>
+
+        <blockquote class="info">
+          The source code for every demo in this article can be found on my <a href="https://github.com/MayorMonty/voronoi/">GitHub</a>
+        </blockquote>
+
+        <p>This method actually does have a few advantages:</p>
+        <ul>
+          <li>After the process is complete, we have a lookup table of pixel to site, which means
+          that we don't need to do any further computation</li>
+          <li>Relatively simple to understand and implement</li>
+        </ul>
+
+        <p>However, there are a number of big disadvantages, which you can see in the demo below</p>
+
+        
 
       </section>
 

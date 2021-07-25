@@ -149,6 +149,7 @@ section a.permalink {
   text-decoration: none;
 }
 
+
 div.job {
   display: flex;
 }
@@ -166,6 +167,28 @@ blockquote.mono {
   font-size: 0.9rem;
   clear: both;
 }
+
+blockquote.mono p {
+  font-size: 0.9rem;
+}
+
+blockquote .line {
+  display: block;
+  margin: 0;
+}
+
+blockquote .i1 {
+  margin-left: 1rem;
+}
+
+blockquote .i2 {
+  margin-left: 2rem;
+}
+
+blockquote .i3 {
+  margin-left: 3rem;
+}
+
 
 code.block {
   font-family: "Fira Code", monospace;
@@ -288,6 +311,7 @@ input {
 p {
   line-height: 1.4;
   overflow-wrap: break-word;
+  font-size: 1.15rem;
 }
 
 section.image {
