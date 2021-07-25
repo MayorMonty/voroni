@@ -1,21 +1,23 @@
+use rand::prelude::*;
 ///
 /// Represents a point in 2D space. Coordinates are stored as integers, so some computations will
 /// need to round to the nearest integer.
-/// 
+///
 /// Author: Brendan McGuire
 /// Date: 18 July 2021
-/// 
+///
 /// https://bren.app/voronoi/
-/// 
-
-
+///
 use std::{fmt::Display, ops::Range};
-use rand::prelude::*;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
-pub struct Point { pub x: i32, pub y: i32 }
+pub struct Point {
+    pub x: i32,
+    pub y: i32,
+}
 pub enum Metric {
     Euclidean,
+    EuclideanSquared,
     Manhattan,
 }
 
@@ -32,15 +34,19 @@ impl Point {
     }
 
     fn dist_euclidean(&self, other: &Point) -> f64 {
+        let diff_sq: f64 = self.dist_euclidean_squared(other);
+        let sqrt_diff = diff_sq.sqrt();
 
+        sqrt_diff
+    }
 
+    fn dist_euclidean_squared(&self, other: &Point) -> f64 {
         let x_diff: f64 = (self.x - other.x).into();
         let y_diff: f64 = (self.y - other.y).into();
 
         let diff_sq: f64 = (x_diff * x_diff + y_diff * y_diff).into();
-        let sqrt_diff = diff_sq.sqrt();
 
-        sqrt_diff
+        diff_sq
     }
 
     fn dist_manhattan(&self, other: &Point) -> f64 {
@@ -53,11 +59,10 @@ impl Point {
     pub fn dist(&self, other: &Point, metric: Metric) -> f64 {
         match metric {
             Metric::Euclidean => self.dist_euclidean(other),
+            Metric::EuclideanSquared => self.dist_euclidean_squared(other),
             Metric::Manhattan => self.dist_manhattan(other),
         }
     }
-
-
 }
 
 impl Display for Point {
@@ -65,4 +70,3 @@ impl Display for Point {
         write!(f, "({}, {})", self.x, self.y)
     }
 }
-    
