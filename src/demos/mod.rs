@@ -19,14 +19,6 @@ pub fn demo_setup(canvas: &web_sys::HtmlCanvasElement, num_points: u32) -> (Rc<C
     let width = canvas.width() as i32;
     let height = canvas.height() as i32;
 
-    // Get the actual dimensions of the canvas, which is based on the size of the device, and will
-    // change. The ratio will always be the same (16:9)
-    let rect = canvas.get_bounding_client_rect();
-    let canvas_width = rect.width() as i32;
-    let canvas_height = rect.height() as i32;
-    let canvas_left = rect.left();
-    let canvas_top = rect.top();
-
     // Generate the initial points to base each region off of
     let sites: Vec<Point> = (0..num_points)
         .map(|_| Point::random(&mut rng, 0..width, 0..height))
@@ -55,3 +47,4 @@ pub fn demo_setup(canvas: &web_sys::HtmlCanvasElement, num_points: u32) -> (Rc<C
 
 pub mod cursor_point;
 pub mod naive;
+pub mod perpendicular_bisector;

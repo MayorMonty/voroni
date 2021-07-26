@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="main.css" />
     <title>Voronoi Diagrams</title>
+    <script
+      type="text/javascript"
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
   </head>
   <body>
     <main>
@@ -66,30 +72,35 @@
         more systematic approach to this?
       </p>
 
-      <h2 class="title">Approach #1: Naive Approach</h2>
+      <h2 class="title">Approach #1: Naive</h2>
       <section class="dashed-top" id="naive">
-        <a href="naive" class="permalink">#</a>
-        <p>Let's start with the simplest way to do this: what if, for every pixel, we just measure
-        and record the shortest distance.</p>
+        <a href="#naive" class="permalink">#</a>
+        <p>
+          Let's start with the simplest way to do create voronoi regions. What
+          if, for every pixel, we just measure and record the shortest distance.
+        </p>
 
         <blockquote class="mono">
           <p class="line i0">let shortest = map(point => site)</p>
           <p class="line i0">for each point in plane {</p>
-            <p class="line i1">let closest_site;</p>
-            <p class="line i1">let closest_distance;</p>
-            <p class="line i1">for each site in sites {</p>
-              <p class="line i2">let distance = distance(point, site);</p>
-              <p class="line i2">if distance < closest_distance {</p>
-                <p class="line i3">closest_site = site;</p>
-                <p class="line i3">closest_distance = distance;</p>
-              <p class="line i2">}</p>
-            <p class="line i1">}</p>
-            <p class="line i1">shortest[point] = closest_site</p>
+          <p class="line i1">let closest_site;</p>
+          <p class="line i1">let closest_distance;</p>
+          <p class="line i1">for each site in sites {</p>
+          <p class="line i2">let distance = distance(point, site);</p>
+          <p class="line i2">if distance < closest_distance {</p>
+          <p class="line i3">closest_site = site;</p>
+          <p class="line i3">closest_distance = distance;</p>
+          <p class="line i2">}</p>
+          <p class="line i1">}</p>
+          <p class="line i1">shortest[point] = closest_site</p>
           <p class="line i0">}</p>
         </blockquote>
 
-        <p>So, let's try it! The demo below will iterate through every pixel in the plane
-        (160x90), and determine the closest voronoi site. </p>
+        <p>
+          So, let's try it! The demo below will iterate through every pixel in
+          the plane (320x180), determine the closest voronoi site, and label
+          every point accordingly.
+        </p>
 
         <canvas id="demo-2" height="180" width="320"></canvas>
         <section class="controls">
@@ -109,51 +120,148 @@
           <button id="demo-2-go" class="outlined">Go!</button>
         </section>
 
-        <blockquote class="info">
-          The source code for every demo in this article can be found on my <a href="https://github.com/MayorMonty/voronoi/">GitHub</a>
-        </blockquote>
-
         <p>This method actually does have a few advantages:</p>
         <ul>
-          <li>After the process is complete, we have a lookup table of pixel to site, which means
-          that we don't need to do any further computation</li>
+          <li>
+            After the process is complete, we have a lookup table of pixel to
+            site, which means that we don't need to do any further computation
+          </li>
           <li>Relatively simple to understand and implement</li>
         </ul>
 
-        <p>However, there are a number of big disadvantages, which you can see in the demo below</p>
+        <p>
+          However, the disadvantages to this approach make it nonviable for any
+          sort of larger scenario:
+        </p>
 
-        
+        <ul>
+          <li>
+            This demo has 25x fewer pixels than the first demo, because anything
+            more would be incredibly slow. This is because the number of
+            operations we have to do scales with both the dimensions of the grid
+            to search, and the number of sites.
+            <em
+              >Doubling the number of sites means double the work, and doubling
+              the length & width means four times as many operations!</em
+            >
+          </li>
+          <li>
+            We don't have any information about how these voronoi regions are
+            shaped, all we have is a list of pixels. This is great for rendering
+            like above, but makes working with the data beyond that very
+            difficult
+          </li>
+        </ul>
 
+        <p>
+          Obviously, this sort of approach isn't going to work for larger
+          numbers of sites, or for larger grids. Let's try to simply the problem
+          a bit to see if we can get some ideas.
+        </p>
+
+        <section class="image">
+          <img src="./assets/2_points.png" alt="2 points are on a graph" />
+          <div class="description">
+            <p>
+              Imagine that we have only 2 points, say site A, and site B. We're
+              trying to draw a line that will divide the plane, such that all of
+              the points on 1 side are the points that are closest to site A,
+              and all of the points on the other are closest to site B.
+            </p>
+            <p>
+              For this case, where A and B have the same y-coordinate, we should
+              just be able to draw a straight, vertical line halfway between the
+              sites.
+            </p>
+          </div>
+        </section>
+
+        <section class="image">
+          <div class="description">
+            <p>
+              Since the line rests halfway between the two points, all of the
+              points on the left side will be closer to site A, and all of the
+              points on the right side will be closer to site B.
+            </p>
+          </div>
+          <img src="./assets/bisector.png" alt="A vertical line divides " />
+        </section>
+
+        <p>
+          For lines that do not have the same y-coordinate, we can just rotate
+          the image, and use the <em>perpendicular bisectors</em>. That is, the
+          line that is perpendicular to the line that connects the two points.
+        </p>
+        <section class="image centered big">
+          <img
+            src="./assets/perpendicular_bisector.png"
+            alt="Use a perpendicular bisector to divide
+          the two points"
+          />
+        </section>
+
+        <p>
+          So this is great! For any 2 points, we know how to draw a line that
+          divides the plane correctly!
+        </p>
+
+        <p>
+          For sites a and b, we can find the perpendicular bisector, or the
+          equation of the voronoi edge like so:
+        </p>
+
+        <ol>
+          <li>
+            Find the midpoint
+            <p>\(M = (\frac{a_x + b_x}{2}, \frac{a_y + b_y}{2})\)</p>
+          </li>
+          <li>
+            Find the slope of the line joining A and B:
+            <p>\(m = \frac{a_y - b_y}{a_x - b_x}\)</p>
+          </li>
+          <li>
+            The perpendicular bisector is the line passing through the midpoint
+            with the negative reciprocal of \(m\)
+            <p>\(y - M_y = -\frac{1}{m}(x - M_x)\)</p>
+          </li>
+        </ol>
+
+        <p>
+          This is great, but what about graphs with more than two points? Well,
+          let's try it! The demo below shows all the perpendicular bisectors
+          between all of the points on the graph
+        </p>
+
+        <canvas id="demo-3" height="900" width="1600"></canvas>
+        <section class="controls">
+          <div class="control">
+            <label>
+              <span>Number of Points</span>
+              <input
+                type="number"
+                min="2"
+                max="12"
+                step="1"
+                value="4"
+                id="demo-3-points"
+              />
+            </label>
+          </div>
+          <button id="demo-3-go" class="outlined">Go</button>
+        </section>
       </section>
 
-      <h2 class="title">Approach #2: Fortune's Algorithm</h2>
-      <section class="dashed-top" id="fortunes-algorithm">
-        <a href="#fortunes-algorithm" class="permalink">#</a>
-        <p></p>
-      </section>
-
-      <h2 class="title">Approach #3: Dulaney Triangulation</h2>
+      <h2 class="title">Approach #2: Dulaney Triangulation</h2>
       <section class="dashed-top" id="dulaney-triangulation">
         <a href="#dulaney-triangulation" class="permalink">#</a>
         <p></p>
       </section>
 
-      <h2 class="title">What's The Best?</h2>
-      <section class="dashed-top" id="whats-the-best">
-        <a href="#whats-the-best" class="permalink">#</a>
+      <h2 class="title">Approach #3: Fortune's Algorithm</h2>
+      <section class="dashed-top" id="fortunes-algorithm">
+        <a href="#fortunes-algorithm" class="permalink">#</a>
         <p></p>
       </section>
-
-      <!-- <canvas id="canvas" height="900" width="1600"></canvas>
-      <section class="controls">
-        <div class="control">
-          <label>
-            <span>Number of Points</span>
-            <input type="number" min="2" max="12" step="1" value="4" id="points" />
-          </label>
-        </div>
-        <button id="regenerate" class="outlined">regenerate</button>
-      </section> -->
     </main>
   </body>
 </html>

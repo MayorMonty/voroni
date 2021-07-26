@@ -37,7 +37,7 @@
 body,
 html {
   font-family: "Source Sans Pro", sans-serif;
-  color: #eee;
+  color: rgb(233, 233, 233);
   background-color: #333333;
   margin: 0;
   border-top: 4px solid #a29bfe;
@@ -63,6 +63,7 @@ h1.intro,
 .title {
   font-family: "Sansita", serif;
   margin-bottom: 8px;
+  color: #fff;
 }
 
 .subhead {
@@ -308,7 +309,7 @@ input {
   margin-bottom: 2px;
 }
 
-p {
+p, li {
   line-height: 1.4;
   overflow-wrap: break-word;
   font-size: 1.15rem;
@@ -319,16 +320,43 @@ section.image {
   margin-bottom: 8px;
 }
 
-section.image.image-row {
-  flex-direction: row;
+section.image.big img {
+  max-height: unset;
+  max-width: 100%;
 }
 
-section.image.image-row p {
-  margin-left: 16px;
-  font-style: italic;
+section.image.centered {
+  justify-content: center;
 }
 
 section.image img {
   border-radius: 8px;
   max-height: 30vh;
+}
+
+section.image div.description {
+  margin-left: 16px;
+  margin-top: 0;
+}
+
+section.image p {
+  margin: 0;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 760px) {
+
+  section.image {
+    flex-direction: column;
+  }
+
+  section.image div.description {
+    margin-left: 0;
+    margin-top: 16px;
+  }
+
+  section.image img {
+    max-height: unset;
+  }
+
 }
