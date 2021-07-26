@@ -248,6 +248,31 @@
 
       <p>So how do we determine that range?</p>
 
+      <p>When a line intersects another, we bifurcate that line into 2 segments. Either or both of
+      these segments may be closer to another point than the sites that defined it. If that is the
+      case, then we must remove that segment!</p>
+
+      <p></p>
+
+      <canvas id="demo-4" height="900" width="1600"></canvas>
+        <section class="controls">
+          <div class="control">
+            <label>
+              <span>Number of Points</span>
+              <input
+                type="number"
+                min="2"
+                max="12"
+                step="1"
+                value="4"
+                id="demo-4-points"
+              />
+            </label>
+          </div>
+          <button id="demo-4-go" class="outlined">Go</button>
+        </section>
+      </section>
+
       <h2 class="title">Approach #2: Dulaney Triangulation</h2>
       <section class="dashed-top" id="dulaney-triangulation">
         <a href="#dulaney-triangulation" class="permalink">#</a>
