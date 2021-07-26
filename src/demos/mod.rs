@@ -48,3 +48,4 @@ pub fn demo_setup(canvas: &web_sys::HtmlCanvasElement, num_points: u32) -> (Rc<C
 pub mod cursor_point;
 pub mod naive;
 pub mod perpendicular_bisector;
+pub mod perpendicular_bisector_ranges;

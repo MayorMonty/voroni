@@ -5,11 +5,8 @@
 /// is an important first step in finding the Dulaney triangulation.
 /// 
 /// 
-use std::{cmp::Ordering};
-use crate::point::{Point, Metric};
+
 use wasm_bindgen::prelude::*;
-use wasm_bindgen::{JsCast};
-use web_sys::Touch;
 use super::demo_setup;
 
 

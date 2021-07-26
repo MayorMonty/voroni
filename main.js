@@ -47,6 +47,22 @@ function demo3(wasm) {
   wasm.demo3(canvas, +points.value);
 }
 
+function demo4(wasm) {
+  const canvas = document.getElementById("demo-4");
+  const context = canvas.getContext("2d");
+
+  const go = document.getElementById("demo-4-go");
+  const points = document.getElementById("demo-4-points");
+
+  go.addEventListener("click", () => {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    wasm.demo4(canvas, +points.value);
+  });
+
+
+  wasm.demo4(canvas, +points.value);
+}
+
 
 import("./pkg")
   .then((wasm) => {
@@ -62,6 +78,9 @@ import("./pkg")
 
     // Demo 3: Finds and draws all of the perpendicular bisectors
     demo3(wasm);
+
+    // Demo 3: Finds and draws all of the perpendicular bisectors, limiting their range appropriately
+    demo4(wasm);
   
 
   })

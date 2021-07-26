@@ -7,12 +7,13 @@ mod demos;
 use std::panic;
 extern crate console_error_panic_hook;
 
-#[macro_use]
+#[macro_export]
 macro_rules! console_log {
     // Note that this is using the `log` function imported above during
     // `bare_bones`
     ($($t:tt)*) => {
         unsafe {
+            use web_sys::console;
             console::log_1(&format_args!($($t)*).to_string().into())
         }
     }

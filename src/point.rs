@@ -1,4 +1,3 @@
-use rand::prelude::*;
 ///
 /// Represents a point in 2D space. Coordinates are stored as integers, so some computations will
 /// need to round to the nearest integer.
@@ -9,6 +8,7 @@ use rand::prelude::*;
 /// https://bren.app/voronoi/
 ///
 use std::{fmt::Display, ops::Range};
+use rand::prelude::*;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub struct Point {
