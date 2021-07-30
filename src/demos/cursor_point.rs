@@ -83,57 +83,6 @@ pub fn demo1(canvas: web_sys::HtmlCanvasElement, num_points: u32) -> Result<(), 
         closure.forget();
     }
 
-    {
-        let context = context.clone();
-        let closure = Closure::wrap(Box::new(move |event: web_sys::TouchEvent| {
-            let touch = event.touches().get(0) as Option<Touch>;
-            event.prevent_default();
-
-            if let Some(touch) = touch {
-                // Get the mouse position, in the rendering coordinates
-
-                let (x, y) = (
-                    touch.client_x() as f64 - canvas_left,
-                    touch.client_y() as f64 - canvas_top,
-                );
-                let (x, y) = (
-                    x / canvas_width as f64 * width as f64,
-                    y / canvas_height as f64 * height as f64,
-                );
-
-                let mouse = Point::new(x as i32, y as i32);
-
-                context.clear_rect(0.0, 0.0, width.into(), height.into());
-
-                // Render each point as a little circle, and draw guidance lines to each
-                for point in &sites {
-                    let (x, y): (f64, f64) = (point.x.into(), point.y.into());
-
-                    context.begin_path();
-                    context
-                        .arc(x, y, 6.0, 0.0, std::f64::consts::PI * 2.0)
-                        .unwrap();
-                    context.stroke();
-                }
-
-                let closest = sites.iter().min_by(|a, b| {
-                    a.dist(&mouse, Metric::Euclidean)
-                        .partial_cmp(&b.dist(&mouse, Metric::Euclidean))
-                        .unwrap_or(Ordering::Equal)
-                });
-
-                if let Some(site) = closest {
-                    context.begin_path();
-                    context.move_to(site.x.into(), site.y.into());
-                    context.line_to(mouse.x.into(), mouse.y.into());
-                    context.stroke();
-                }
-            }
-        }) as Box<dyn FnMut(_)>);
-
-        canvas.add_event_listener_with_callback("touchmove", closure.as_ref().unchecked_ref())?;
-        closure.forget();
-    }
 
     Ok(())
 }
