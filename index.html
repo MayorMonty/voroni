@@ -46,7 +46,6 @@
           is at that point. See if you can find the areas where the closest site
           changes
         </p>
-      </section>
 
       <canvas id="demo-1" height="900" width="1600"></canvas>
       <section class="controls">
@@ -71,6 +70,8 @@
         some of the edges of the Voronoi Diagram are. But how could we create a
         more systematic approach to this?
       </p>
+    </section>
+
 
       <h2 class="title">Approach #1: Naive</h2>
       <section class="dashed-top" id="naive">
@@ -252,9 +253,19 @@
       these segments may be closer to another point than the sites that defined it. If that is the
       case, then we must remove that segment!</p>
 
-      <p></p>
+      <!-- <h2 class="title">Approach #2: Dulaney Triangulation</h2>
+      <section class="dashed-top" id="dulaney-triangulation">
+        <a href="#dulaney-triangulation" class="permalink">#</a>
+        <p></p>
+      </section> -->
 
-      <canvas id="demo-4" height="900" width="1600"></canvas>
+      <h2 class="title">Approach #3: Fortune's Algorithm</h2>
+      <section class="dashed-top" id="fortunes-algorithm">
+        <a href="#fortunes-algorithm" class="permalink">#</a>
+
+        <p>Fortune's Algorithm works a little differently than what we've done before</p>
+
+        <canvas id="demo-3" height="900" width="1600"></canvas>
         <section class="controls">
           <div class="control">
             <label>
@@ -265,24 +276,13 @@
                 max="12"
                 step="1"
                 value="4"
-                id="demo-4-points"
+                id="demo-3-points"
               />
             </label>
           </div>
-          <button id="demo-4-go" class="outlined">Go</button>
+          <button id="demo-3-go" class="outlined">Go</button>
         </section>
       </section>
-
-      <h2 class="title">Approach #2: Dulaney Triangulation</h2>
-      <section class="dashed-top" id="dulaney-triangulation">
-        <a href="#dulaney-triangulation" class="permalink">#</a>
-        <p></p>
-      </section>
-
-      <h2 class="title">Approach #3: Fortune's Algorithm</h2>
-      <section class="dashed-top" id="fortunes-algorithm">
-        <a href="#fortunes-algorithm" class="permalink">#</a>
-        <p></p>
       </section>
     </main>
   </body>

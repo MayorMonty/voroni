@@ -1,7 +1,15 @@
 import "./main.css"
 
+const verticalDemos = window.matchMedia("(max-aspect-ratio: 1/1)").matches;
+const dimensions = verticalDemos ? [900, 1600] : [1600, 900];
+
+
 function demo1(wasm) {
   const canvas = document.getElementById("demo-1");
+
+  canvas.width = dimensions[0];
+  canvas.height = dimensions[1];
+
   const context = canvas.getContext("2d");
 
   const regenerate = document.getElementById("demo-1-regenerate");
@@ -17,6 +25,11 @@ function demo1(wasm) {
 
 function demo2(wasm) {
   const canvas = document.getElementById("demo-2");
+
+  // Divide by 5 to ensure reasonable computation time
+  canvas.width = dimensions[0] / 5;
+  canvas.height = dimensions[1] / 5;
+
   const context = canvas.getContext("2d");
 
   const go = document.getElementById("demo-2-go");
@@ -33,6 +46,10 @@ function demo2(wasm) {
 
 function demo3(wasm) {
   const canvas = document.getElementById("demo-3");
+
+  canvas.width = dimensions[0];
+  canvas.height = dimensions[1];
+
   const context = canvas.getContext("2d");
 
   const go = document.getElementById("demo-3-go");
@@ -49,6 +66,10 @@ function demo3(wasm) {
 
 function demo4(wasm) {
   const canvas = document.getElementById("demo-4");
+
+  canvas.width = dimensions[0];
+  canvas.height = dimensions[1];
+
   const context = canvas.getContext("2d");
 
   const go = document.getElementById("demo-4-go");
@@ -63,6 +84,13 @@ function demo4(wasm) {
   wasm.demo4(canvas, +points.value);
 }
 
+function demo5(wasm) {
+
+  // For mobile screens, flip the canvas to portrait mode, and go full screen.
+
+
+};
+
 
 import("./pkg")
   .then((wasm) => {
@@ -73,7 +101,7 @@ import("./pkg")
     // Demo 1: Highlight the closest point
     demo1(wasm);
 
-    // Demo 2: Finds the closest site and draws a line to it
+    // Demo 2: Finds the closest site and colorize it
     demo2(wasm);
 
     // Demo 3: Finds and draws all of the perpendicular bisectors
@@ -81,6 +109,8 @@ import("./pkg")
 
     // Demo 3: Finds and draws all of the perpendicular bisectors, limiting their range appropriately
     demo4(wasm);
+
+    demo5(wasm);
   
 
   })

@@ -53,6 +53,20 @@ main {
   padding: 32px;
   padding-top: 36px;
   box-sizing: border-box;
+
+  /* For elements which are wider than the text */
+  display: flex;
+  flex-direction: column;
+
+  /* Scroll snapping for demos */
+  scroll-snap-type: y proximity;
+
+}
+
+main > section.dashed-top {
+    /* For elements which are wider than the text */
+    display: flex;
+    flex-direction: column;
 }
 
 header.margin-bottom {
@@ -229,11 +243,26 @@ ul {
   padding-top: 0;
 }
 
+
 canvas {
-  width: 100%;
+
+  width: auto;
+  height: 80vh;
+
+  align-self: center;
+
   border-radius: 8px;
   border: 2px solid #fab1a0;
 }
+
+@media (max-aspect-ratio: 1/1)  {
+  canvas {
+    max-height: 80vh;
+    width: 90vw;
+  }
+}
+
+
 
 button.outlined {
   background: none;
